@@ -1,4 +1,55 @@
 https://mine-it-record.tistory.com/350 컴포넌트 동적 추가
 
 
-test txt
+test txttest
+
+
+<template>
+  <div>
+    <!-- <MultiplicationTable/> -->
+    <TestMulit />
+    <TestMulit />
+    <!-- javscript tag 추가 해서 props로 넘겨서 만들기? -->
+
+    <button v-on:click="pushArr">push arr</button>
+    <button v-on:click="popArr">del last arr</button>
+    {{data}}
+  </div>
+</template>
+
+<script>
+// import MultiplicationTable from './components/MultiplicationTable.vue';
+import TestMulit from './components/TestMulit.vue';
+
+export default {
+  name: 'App',
+  components: {
+    // MultiplicationTable,
+    TestMulit
+  },
+  methods: {
+    pushArr() {
+      this.data.push([1,2,3,4,5,6,7,8,9])
+    },
+    popArr() {
+      this.data.pop();
+    }
+  },
+  data() {
+    return{
+      data: [[1,2,3,4,5,6,7,8,9]]
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
