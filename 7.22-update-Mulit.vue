@@ -42,13 +42,19 @@ export default {
     },
     mtDel(id, mtIndex) { //del btn
       this.mtTableData.splice(id, 1);
-      alert(`${mtIndex}단이 삭제되었습니다.`)
+      alert(`${mtIndex}단이 삭제되었습니다.`);
     },
 
-    // update test
+    // update (string return)
     testUpdate(index) {
-        this.mtTableData[index].id = Number(document.querySelector(`.updateBtn${index}`).value);
-        alert(this.mtTableData[index].id + "단으로 update");
+      var copy = this.mtTableData[index].id; 
+      this.mtTableData[index].id = document.querySelector(`.updateBtn${index}`).value;
+      if(isNaN(this.mtTableData[index].id)) {
+        alert('숫자를 입력해주세요.');
+        this.mtTableData[index].id = copy;
+        return;
+      }
+      alert(this.mtTableData[index].id + "단으로 update");
     }
   }
 }
