@@ -32,6 +32,8 @@ export default {
   },
   methods: {
     setMtVal() {
+      if(isNaN(this.val)) alert('숫자를 입력해주세요.'); //string return
+
       this.mtTableData = []; //arr reset
 
       this.mtShow = true; //mt show 
