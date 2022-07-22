@@ -45,9 +45,8 @@ export default {
 
     // update test
     testUpdate(index) {
-        console.log(this.mtTableData[index].id);
-        console.log(Number(document.querySelector(`.updateBtn${index}`).value))
         this.mtTableData[index].id = Number(document.querySelector(`.updateBtn${index}`).value);
+        alert(this.mtTableData[index].id + "단으로 update");
     }
   }
 }
