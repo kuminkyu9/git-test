@@ -6,7 +6,7 @@
 
     <div v-if="mtShow" class="container">
       <ul v-for="(mtDatas, index) in mtTableData" v-bind:key="mtDatas" class="box">
-        <li v-for="mtRight in mtTableData[index].mtRight" v-bind:key="mtRight">{{mtTableData[index].id}} x {{mtRight}} = {{mtTableData[index].id*mtRight}}</li>
+        <li v-for="mtRight in mtRightData" v-bind:key="mtRight">{{mtTableData[index].id}} x {{mtRight}} = {{mtTableData[index].id*mtRight}}</li>
         <div v-on:click="mtDel(index, mtTableData[index].id)" class="delBtn">{{mtTableData[index].id}}단 삭제하기</div>
 
         <!-- update -->
@@ -26,6 +26,8 @@ export default {
       mtTableData: [
         // {id: i, mtRight: [1,2,3,4,5,6,7,8,9], onOff: true} this.mtTableData.push({id: i, mtRight: [1,2,3,4,5,6,7,8,9]})
       ],
+
+      mtRightData: [1,2,3,4,5,6,7,8,9]
     }
   },
   methods: {
@@ -35,7 +37,7 @@ export default {
       this.mtShow = true; //mt show 
 
       for(var i=0; i<this.val; i++) { //mtTableData push
-        this.mtTableData.push({id: i+1, mtRight: [1,2,3,4,5,6,7,8,9], onOff: true});  //id mtLeftVal, onOff v-if boolean
+        this.mtTableData.push({id: i+1});  //id mtLeftVal, onOff v-if boolean
       }
     },
     mtDel(id, mtIndex) { //del btn
