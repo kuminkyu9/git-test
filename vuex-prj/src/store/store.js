@@ -15,27 +15,25 @@ export default createStore({
         SwfList: [
             {
                 text: 'X 1',
-                value: '1'
+                value: 1
             },
             {
                 text: 'X 2',
-                value: '2'
+                value: 2
             },
             {
                 text: 'X 3',
-                value: 'X 3'
+                value: 3
             },
             {
                 text: 'X 4',
-                value: 'X 4'
+                value: 4
             },
             {
                 text: 'X 5',
-                value: 'X 5'
+                value: 5
             },
-
         ]
-
     },
     getters: {
     },
