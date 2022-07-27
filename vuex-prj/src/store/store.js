@@ -10,22 +10,40 @@ export default createStore({
         ],
         modalName: '',
         modalColor: '',
+        
+        // select val
+        SwfList: [
+            {
+                text: 'X 1',
+                value: '1'
+            },
+            {
+                text: 'X 2',
+                value: '2'
+            },
+            {
+                text: 'X 3',
+                value: 'X 3'
+            },
+            {
+                text: 'X 4',
+                value: 'X 4'
+            },
+            {
+                text: 'X 5',
+                value: 'X 5'
+            },
 
+        ]
 
-
-        // 배수 on/off class 명으로 줘서 하위에 display on off
     },
     getters: {
     },
     mutations: {
-        
-
         // setVal
         setVal(state, setVal) {
             return state.setVal = setVal;
         },
-
-
         // modal
         changeModalColor(state, colorName) {
             return state.modalColor = colorName;
