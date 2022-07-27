@@ -1,14 +1,17 @@
 <template>
-  <VueBody />
+  <VueBody style="display: none"/>
+  <TestVux />
 </template>
 
 <script>
 import VueBody from './components/VueBody.vue'
+import TestVux from './components/TestVux.vue'
 
 export default {
   name: 'App',
   components: {
     VueBody,
+    TestVux,
   }
 }
 </script>
