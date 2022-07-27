@@ -1,17 +1,24 @@
 <template>
-  <VueBody style="display: none"/>
-  <TestVux />
+  <VueInput />
+  <VueBody />
+  <VueOrigin style="display: block"/>
+
+  <VueModal />
 </template>
 
 <script>
+import VueInput from './components/VueInput.vue'
 import VueBody from './components/VueBody.vue'
-import TestVux from './components/TestVux.vue'
+import VueOrigin from './components/VueOrigin.vue'
+import VueModal from './components/VueModal.vue'
 
 export default {
   name: 'App',
   components: {
+    VueInput,
     VueBody,
-    TestVux,
+    VueOrigin,
+    VueModal
   }
 }
 </script>

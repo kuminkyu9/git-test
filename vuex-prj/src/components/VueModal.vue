@@ -1,21 +1,41 @@
 <template>
-    <div class="modal-container">
-        <div class="modal del-modal" v-if="eventModal == 'del'">삭제완료</div>
-        <div class="modal update-modal" v-if="eventModal == 'update'">업데이트</div>
-        <div class="modal duplicate-modal" v-if="eventModal == 'duplicate'">중복</div>
-        <div class="modal clear-modal" v-if="eventModal == 'clear'">전체삭제</div>
-        <div class="modal string-modal" v-if="eventModal == 'string'">문자X</div>
-        <div class="modal no-set-modal" v-if="eventModal == 'noSet'">입력해주세요!</div>
-        <div class="modal front-zero-modal" v-if="eventModal == 'frontZero'">올바른 숫자를 입력해주세요.</div>
+    <div class="modal_container">
+        <div class="modal" :style="modalColor">{{modalName}}</div>
     </div>
 </template>
 
 <script>
 export default {
-
+    computed: {
+        modalName() {
+            return this.$store.state.modalName;
+        },
+        modalColor() {
+            return {
+                '--test-color': this.$store.state.modalColor
+            }
+        }
+    }
 }
 </script>
 
-<style>
-
+<style scoped>
+/* modal */
+    .modal_container {
+        position: fixed;
+        top: -100%;
+        left: 2%;
+        transition: .4s;
+    }
+    .modal_container .modal {
+        --test-color: '#fff';
+        border-radius: 5px;
+        color: #fff;
+        font-weight: 30;
+        padding: 10px;
+        letter-spacing: 3px;
+        width: 100px;
+        line-height: 30px;
+        background: var(--test-color);
+    }
 </style>
