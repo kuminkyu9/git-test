@@ -10,7 +10,7 @@ export default createStore({
         ],
         modalName: '',
         modalColor: '',
-        SwfList: [  // select val
+        SwfList: [  // select tag values
             {
                 text: 'X 1',
                 value: 1
@@ -39,6 +39,12 @@ export default createStore({
                 text: 'X 7',
                 value: 7
             },
+            /* 아래처럼 추가 text가 화면에 나오는거, value가 원하는 값 
+            {
+                 text: 'X 8',
+                 value: 8
+            } 
+            */
         ],
         selectNoR: 2,   // number of repetitions,    VueBody cmp 개수,   마지막 cmp select 창 보임
     },
@@ -54,6 +60,9 @@ export default createStore({
         changeModalName(state, nameVal) {
             return state.modalName = nameVal;   // 모달창 text 바꿈
         },
+        mtTableReset(state) {
+            return state.mtTableData = []   // mtTableData 초기화
+        }
     },
     actions: {
 

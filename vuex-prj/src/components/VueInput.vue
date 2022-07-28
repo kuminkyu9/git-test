@@ -27,45 +27,45 @@ export default {
     }
   },
   methods: {
+    modal(colorName, nameVal) { // (modal 창 배경색 ex:(red, rgb(0,0,0), hsl(hue, saturation, lightness)), modal 창 text)
+      var modalCon = document.querySelector('.modal_container');
+        
+      this.$store.commit('changeModalColor', colorName);  
+      this.$store.commit('changeModalName', nameVal);  
+
+      modalCon.style.top='5%';  // show modal
+      setTimeout(()=>{modalCon.style.top='-50%'}, 700); // del modal
+    },
     setMtVal() {
       var copy = [...this.val];
-      if(copy[0] == 0) { // 숫자 error
+      if(copy[0] == 0) {  // input 값의 숫자 형식이 올바르지 않을 때
         this.val = '';
-        this.modal('rgba(83, 19, 244, 0.822)', '숫자형식이 잘못되었습니다.');
+        this.modal('rgba(83, 19, 244, 0.822)', '숫자 형식이 잘못되었습니다.');
       } 
-      else if(isNaN(this.val)) { //string return
+      else if(isNaN(this.val)) {  // input 값이 문자일 때
         this.val = '';
-        this.modal('rgba(83, 19, 244, 0.822)', '숫자를 입력해주세요.'); // string error modal
+        this.modal('rgba(83, 19, 244, 0.822)', '숫자를 입력해주세요.');
       } 
-      else if(!this.val){
-        this.modal('rgb(255, 79, 79)', '입력해주세요.'); // no set modal
+      else if(!this.val){ // input 값이 없을 때
+        this.modal('rgb(255, 79, 79)', '입력해주세요.');
         return;
       } 
       else {
         this.$store.commit('setVal', this.val);
-        this.mtTableData.length = 0; // reset arr 
+        this.$store.commit('mtTableReset'); // mtTableData 초기화  
   
-        this.modal('rgb(82, 216, 78)', '업데이트'); // update modal
+        this.modal('rgb(82, 216, 78)', '업데이트');
   
         for(var i=0; i<this.setVal; i++) { //mtTableData push
-          this.mtTableData.push({id: i+1});  //id mtLeftVal, onOff v-if boolean
+          this.mtTableData.push({id: i+1});  //id mtLeftVal,      onOff v-if boolean
         }
       }
     },
     clearAll() {
       this.val = '';
-      this.mtTableData.length = 0;
-      this.modal('rgb(255, 79, 79)', '전체삭제'); //clear modal
+      this.$store.commit('mtTableReset'); // mtTableData 초기화
+      this.modal('rgb(255, 79, 79)', '전체삭제');
     },
-    modal(colorName, nameVal) { // (modal 창 이름명, modal 창 배경색(코드 값으로 가능))
-      var modalCon = document.querySelector('.modal_container');
-        
-      this.$store.commit('changeModalColor', colorName);  
-      this.$store.commit('changeModalName', nameVal); // 
-
-      modalCon.style.top='5%';  // show modal
-      setTimeout(()=>{modalCon.style.top='-50%'}, 700); // del modal
-    }
   }
 }
 </script>

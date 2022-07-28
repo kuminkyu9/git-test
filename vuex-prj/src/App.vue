@@ -17,7 +17,11 @@ export default {
     VueModal
   },
   mounted() {
-    document.querySelector(`.select_${this.selectNoR}`).classList.add('select');  // life circle mount >> VueBody 컴포넌트 마지막 요소에 select class >> select=display:none => block 처리
+    // 첫번째 VueBody 컴포넌트 빼고 select 추가
+    for(var i=0; i<this.selectNoR; i++) {
+      if(i==0) continue;  // VueBody 처음 컴포넌트는 무시
+      document.querySelector(`.select_${i+1}`).classList.add('select');
+    }
   },
   computed: {
     selectNoR() { // VueBody 반복 횟수 
@@ -60,6 +64,7 @@ li {
   padding: 5px;
   border-radius: 7px;
   box-shadow: rgb(0 0 0 / 10%) 0px 5px 10px 0px;
+  min-width: 170px;
   cursor: pointer;
 }
 .del_btn:hover {
