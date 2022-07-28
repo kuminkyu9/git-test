@@ -3,16 +3,14 @@ import {createStore} from "vuex";
 
 export default createStore({
     state: {
-        setVal: '',
-        mtRightData: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        setVal: '', // 입력값
+        mtRightData: [1, 2, 3, 4, 5, 6, 7, 8, 9],   // 상수
         mtTableData: [
             // {id: i} this.mtTableData.push({id: i});{id: i, mtRight: [1,2,3,4,5,6,7,8,9], onOff: true} this.mtTableData.push({id: i, mtRight: [1,2,3,4,5,6,7,8,9]})
         ],
         modalName: '',
         modalColor: '',
-        
-        // select val
-        SwfList: [
+        SwfList: [  // select val
             {
                 text: 'X 1',
                 value: 1
@@ -33,21 +31,28 @@ export default createStore({
                 text: 'X 5',
                 value: 5
             },
-        ]
+            {
+                text: 'X 6',
+                value: 6
+            },
+            {
+                text: 'X 7',
+                value: 7
+            },
+        ],
+        selectNoR: 2,   // number of repetitions,    VueBody cmp 개수,   마지막 cmp select 창 보임
     },
     getters: {
     },
     mutations: {
-        // setVal
         setVal(state, setVal) {
-            return state.setVal = setVal;
+            return state.setVal = setVal;   // 입력값 바꿈, 구구단 몇단까지 입력값
         },
-        // modal
         changeModalColor(state, colorName) {
-            return state.modalColor = colorName;
+            return state.modalColor = colorName; // 모달창 색깔 바꿈
         },
         changeModalName(state, nameVal) {
-            return state.modalName = nameVal;
+            return state.modalName = nameVal;   // 모달창 text 바꿈
         },
     },
     actions: {
