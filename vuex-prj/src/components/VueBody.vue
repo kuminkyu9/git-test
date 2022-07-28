@@ -59,7 +59,7 @@ export default {
         },
         setNewMtData(index) { // 업데이트를 눌렀을 때
             var setBtnVal = document.querySelector(`.updateBtn${index}`).value; 
-            var copy2 = [...setBtnVal];
+            var copy2 = [...setBtnVal]; // 스프레드 연산자로 배열로 변환
 
             // errors
             if(!setBtnVal) { // 입력하지 않았을 때
@@ -72,7 +72,6 @@ export default {
                 this.modal('rgba(83, 19, 244, 0.822)', '숫자를 입력해주세요.');
                 return;
             }
-
             for(var i=0; i<this.mtTableData.length; i++) { // 중복제거  
                 if(this.mtTableData[i].id == setBtnVal) {   // 중복일 때
                     this.modal('rgba(83, 19, 244, 0.822)', '중복'); 

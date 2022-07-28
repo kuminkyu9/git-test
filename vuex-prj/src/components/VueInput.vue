@@ -27,7 +27,7 @@ export default {
     modal(colorName, nameVal) { // (modal 창 배경색 ex:(red, rgb(0,0,0), hsl(hue, saturation, lightness)), modal 창 text)
       var modalCon = document.querySelector('.modal_container');
         
-      this.$store.commit('changeModalColor', colorName);  
+      this.$store.commit('changeModalColor', colorName);  //인자
       this.$store.commit('changeModalName', nameVal);  
 
       modalCon.style.top='5%';  // show modal
@@ -37,7 +37,7 @@ export default {
       var copy = [...this.val];
       if(copy[0] == 0) {  // input 값의 숫자 형식이 올바르지 않을 때
         this.val = '';
-        this.modal('rgba(83, 19, 244, 0.822)', '숫자 형식이 잘못되었습니다.');
+        this.modal('rgba(83, 19, 244, 0.822)', '숫자 형식이 잘못되었습니다.'); //인자
       } 
       else if(isNaN(this.val)) {  // input 값이 문자일 때
         this.val = '';

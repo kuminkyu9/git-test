@@ -29,7 +29,7 @@ export default createStore({
         setVal(state, setVal) {
             state.setVal = setVal;   // 입력값 바꿈, 구구단 몇단까지 입력값
         },
-        changeModalColor(state, colorName) {
+        changeModalColor(state, colorName) { //매개변수
             state.modalColor = colorName; // 모달창 색깔 바꿈
         },
         changeModalName(state, nameVal) {
