@@ -50,50 +50,38 @@ export default {
             setTimeout(()=>{modalCon.style.top='-50%'}, 700); // del modal
         },
         selChangeVal(event) {
-            this.cmpSelectVal = event.target.value;
+            this.cmpSelectVal = event.target.value; // cmpSelectVal = store.js의 SwfList state 값의 value
             this.modal('rgb(82, 216, 78)', '업데이트');
         },
-        changeSelect() {
-            var itemIdSelect = document.querySelector('#select_total_val');
-            var itemName = itemIdSelect.options[itemIdSelect].text;
-            console.log(itemName)
+        mtDel(id) { // 삭제하기를 눌렀을 때
+            this.$store.commit('mtTableDel', id);
+            this.modal('rgb(255, 79, 79)', '삭제되었습니다.');
         },
-        mtDel(id) { //del btn
-            this.mtTableData.splice(id, 1);
-            this.modal('rgb(255, 79, 79)', '삭제되었습니다.'); // del modal
-        },
-        setNewMtData(index) { // update (string return)
-            var copy = this.mtTableData[index].id; 
+        setNewMtData(index) { // 업데이트를 눌렀을 때
             var setBtnVal = document.querySelector(`.updateBtn${index}`).value; 
             var copy2 = [...setBtnVal];
 
-            console.log(document.querySelector(`.updateBtn${index}`).value);
-
             // errors
-            if(!setBtnVal) { // no set event
-                this.modal('rgb(255, 79, 79)', '입력해주세요.'); // no set modal
+            if(!setBtnVal) { // 입력하지 않았을 때
+                this.modal('rgb(255, 79, 79)', '입력해주세요.'); 
                 return;
-            }else if(copy2[0] == 0) { // 숫자 error
-                this.val = '';
-                this.modal('rgba(83, 19, 244, 0.822)', '숫자형식이 잘못되었습니다.'); // numerr modal
+            }else if(copy2[0] == 0) { // 숫자를 잘못 입력했을 때
+                this.modal('rgba(83, 19, 244, 0.822)', '숫자형식이 잘못되었습니다.');
                 return;
-            }else if(isNaN(setBtnVal)) { // 문자입력 return
-                this.mtTableData[index].id = copy;
-                this.modal('rgba(83, 19, 244, 0.822)', '숫자를 입력해주세요.'); // string error modal
+            }else if(isNaN(setBtnVal)) { // 문자를 입력했을 때 
+                this.modal('rgba(83, 19, 244, 0.822)', '숫자를 입력해주세요.');
                 return;
             }
 
-            for(var i=0; i<this.mtTableData.length; i++) { // duplicate 
-                var copySetVal = setBtnVal;
-
-                if(this.mtTableData[i].id == copySetVal) {
-                    this.modal('rgba(83, 19, 244, 0.822)', '중복'); // duplicate modal
+            for(var i=0; i<this.mtTableData.length; i++) { // 중복제거  
+                if(this.mtTableData[i].id == setBtnVal) {   // 중복일 때
+                    this.modal('rgba(83, 19, 244, 0.822)', '중복'); 
                     return;
                 }
             }
-
-            this.mtTableData[index].id = setBtnVal; // set val
-            this.modal('rgb(82, 216, 78)', '업데이트'); // update modal
+            
+            this.mtTableData[index].id = setBtnVal; // mtTableData의 id index의 왼쪽값을 변경함
+            this.modal('rgb(82, 216, 78)', '업데이트'); 
         },
     }
 }

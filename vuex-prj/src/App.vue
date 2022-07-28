@@ -1,6 +1,6 @@
 <template>
   <VueInput />
-  <VueBody v-for="(selectKey, index) in selectNoR" :class="[`select_${index+1}`]" :key="selectKey"/>  <!-- store.js의 selectNoR(반복횟수) state값 만큼 VueBody 컴포넌트 생성 -->
+  <VueBody v-for="(selectKey, index) in selectNoR" v-bind:class="[`select_${index+1}`]" :key="selectKey"/>  <!-- store.js의 selectNoR(반복횟수) state값 만큼 VueBody 컴포넌트 생성 -->
   <VueModal />
 </template>
 

@@ -17,9 +17,6 @@ export default {
     mtTableData() {
       return this.$store.state.mtTableData;
     },
-    mtShow() {
-      return this.$store.state.mtShow;
-    },
   },
   data() {
     return {
@@ -51,13 +48,13 @@ export default {
         return;
       } 
       else {
-        this.$store.commit('setVal', this.val);
+        this.$store.commit('setVal', this.val); // input 입력값 넣기
         this.$store.commit('mtTableReset'); // mtTableData 초기화  
   
         this.modal('rgb(82, 216, 78)', '업데이트');
   
         for(var i=0; i<this.setVal; i++) { //mtTableData push
-          this.mtTableData.push({id: i+1});  //id mtLeftVal,      onOff v-if boolean
+          this.$store.commit('mtPush', i+1);
         }
       }
     },
